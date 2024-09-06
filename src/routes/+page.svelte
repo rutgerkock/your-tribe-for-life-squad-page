@@ -5,29 +5,29 @@
     // Check if the data has been received and is an array
     console.log("Received data in +page.svelte:", data);
 </script>
- 
+
 <!-- Only render if we have people in the data -->
 {#if data.people}
     <ul>
         {#each data.people as person}
-        <li>
-            <article class="card-front">
-                <img src="{person.avatar}" width="150px" height="150px" alt=''>
-                <h1>{person.name}</h1>
-                
-            </article>
-            <article class="card-back">
-                <p>{person.bio}</p>
-                <p>Insert profilecard link</p>
-            </article>
-        </li>
+            <li>
+                <article class="card-front">
+                    <img src="{person.avatar}" width="150px" height="150px" alt=''>
+                    <h1>{person.name}</h1>
+                    
+                </article>
+                <article class="card-back">
+                    <p>{person.bio}</p>
+                    <p>Insert profilecard link</p>
+                </article>
+            </li>
         {/each}
     </ul>
 {:else}
     <!-- This will show if no people are available -->
     <p>No data available</p>
 {/if}
- 
+
 <style>
     ul {
         display: flex;
@@ -52,8 +52,6 @@
         height: 100%;
         position: absolute;
         backface-visibility: hidden;
-        
-        
     }
 
     .card-front {
