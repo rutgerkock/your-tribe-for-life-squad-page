@@ -1,0 +1,11 @@
+.squads {
+    display: flex;
+    gap: 10px;
+}
+.squads a {
+    text-decoration: none;
+    color: white;
+    background-color: #025730;
+    border-radius: 5px;
+    padding: 5px;
+}
