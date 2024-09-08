@@ -6,91 +6,80 @@
   onMount(() => {
     setTimeout(() => {
       isLoaded = true;      
-    }, 2000);
+    }, 1400);
     
   });
 </script>
 
 {#if !isLoaded}
   <div class="loader">
-    <span class="loading">loading</span>
-    <span>.</span>
-    <span class="name">squad</span>
-    <span>.</span>
-    <span class="portfolio">baguette</span>
-
-    <span class="dot dot1">.</span>
-    <span class="dot dot2">.</span>
-    <span class="dot dot3">.</span>
+    <h1 class="loading">FDND<br>SQUADS</h1>
   </div>
 
 {/if}
 <slot />
 
 <style>
-  .loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #282c34;
-    color: #fff;
-    width: 100vw;
-    height: 100vh;
-    z-index: 999;
-    font-family: JetBrains Mono, monospace;
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #282c34;
+  color: #fff;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  overflow: hidden;
 }
 
-  .loader .loading {color: #e4bb68;}
-  .loader .portfolio {color: #ff7883;}
-  .loader .name {color: #61afef;}
+.loading {
+  font-family: 'Oswald', sans-serif; 
+  font-size: 30vw; 
+  letter-spacing: 0.2rem;
+  line-height: 0.8; 
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(100vh); 
+  animation: slideUp 1.4s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+}
 
 
-  .dot {
-    animation: blink 1.5s infinite;
+/* animations -------------------------------------------------------*/
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh);
   }
-
-  .dot1 {
-    animation-delay: 0s;
+  20% {
+    opacity: 1;
   }
-
-  .dot2 {
-    animation-delay: 0.3s;
+  45% {
+    transform: translateY(0vh);
   }
-
-  .dot3 {
-    animation-delay: 0.6s;
+  55% {
+    transform: translateY(0vh);
   }
-
-
-  /* animations -------------------------------------------------------*/
-  @keyframes blink {
-    0%, 20% {
-      transform: translateY(0);
-    }
-    50% {
-
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+  80% {
+    opacity: 1;
   }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh); 
+  }
+}
 
 
 
-
-  /* @media -------------------------------------------------------*/
-  @media (prefers-color-scheme: light) {
+/* @media -------------------------------------------------------*/
+@media (prefers-color-scheme: light) {
   .loader {
     color: #000;
     background-color: #d7d3cb;
   }
-  .loader .loading {color: #674606;}
-  .loader .portfolio {color: #B40B1B;}
-  .loader .name {color: #385772;}
 }
-  
+
 </style>
