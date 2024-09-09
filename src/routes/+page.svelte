@@ -1,6 +1,6 @@
 <script>
-  import { createSearchStore, searchHandler } from '$lib/stores/search';
-  import { onDestroy } from 'svelte';
+    import { createSearchStore, searchHandler } from '$lib/stores/search';
+    import { onDestroy } from 'svelte';
 
     /** @type {import('./$types').PageData} */
     export let data;
