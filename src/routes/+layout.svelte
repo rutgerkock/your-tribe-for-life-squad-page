@@ -6,14 +6,15 @@
   onMount(() => {
     setTimeout(() => {
       isLoaded = true;      
-    }, 1400);
+    }, 100000);
     
   });
 </script>
 
 {#if !isLoaded}
   <div class="loader">
-    <h1 class="loading">FDND<br>SQUADS</h1>
+    <h1>FDND</h1>
+    <h1>SQUADS</h1>
   </div>
 
 {/if}
@@ -26,8 +27,7 @@
   left: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: left;
   background: #282c34;
   color: #fff;
   width: 100vw;
@@ -36,7 +36,7 @@
   overflow: hidden;
 }
 
-.loading {
+.loader h1 {
   font-family: 'Oswald', sans-serif; 
   font-size: 30vw; 
   letter-spacing: 0.2rem;
@@ -45,6 +45,7 @@
   opacity: 0;
   transform: translateY(100vh); 
   animation: slideUp 1.4s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+  margin: 0;
 }
 
 
