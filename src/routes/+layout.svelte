@@ -6,91 +6,71 @@
   onMount(() => {
     setTimeout(() => {
       isLoaded = true;      
-    }, 2000);
+    }, 1800);
     
   });
 </script>
 
 {#if !isLoaded}
   <div class="loader">
-    <span class="loading">loading</span>
-    <span>.</span>
-    <span class="name">squad</span>
-    <span>.</span>
-    <span class="portfolio">page</span>
-
-    <span class="dot dot1">.</span>
-    <span class="dot dot2">.</span>
-    <span class="dot dot3">.</span>
+    <h1>FDND</h1>
+    <h1>SQUADS</h1>
   </div>
 
 {/if}
 <slot />
 
 <style>
-  .loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #282c34;
-    color: #fff;
-    width: 100vw;
-    height: 100vh;
-    z-index: 999;
-    font-family: JetBrains Mono, monospace;
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  background: #102410;
+  color: #CAAA00;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  overflow: hidden;
 }
 
-  .loader .loading {color: #e4bb68;}
-  .loader .portfolio {color: #ff7883;}
-  .loader .name {color: #61afef;}
-
-
-  .dot {
-    animation: blink 1.5s infinite;
-  }
-
-  .dot1 {
-    animation-delay: 0s;
-  }
-
-  .dot2 {
-    animation-delay: 0.3s;
-  }
-
-  .dot3 {
-    animation-delay: 0.6s;
-  }
-
-
-  /* animations -------------------------------------------------------*/
-  @keyframes blink {
-    0%, 20% {
-      transform: translateY(0);
-    }
-    50% {
-
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-
-
-
-  /* @media -------------------------------------------------------*/
-  @media (prefers-color-scheme: light) {
-  .loader {
-    color: #000;
-    background-color: #d7d3cb;
-  }
-  .loader .loading {color: #674606;}
-  .loader .portfolio {color: #B40B1B;}
-  .loader .name {color: #385772;}
+.loader h1 {
+  font-family: 'Lusitana', sans-serif; 
+  font-size: 22.5vw; 
+  letter-spacing: 0.2rem;
+  line-height: 0.8; 
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(100vh); 
+  animation: slideUp 1.8s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+  margin: 0;
 }
-  
+
+
+/* animations -------------------------------------------------------*/
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+  20% {
+    opacity: 1;
+  }
+  45% {
+    transform: translateY(28vh);
+  }
+  55% {
+    transform: translateY(28vh);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh); 
+  }
+}
+
 </style>

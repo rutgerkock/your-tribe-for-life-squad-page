@@ -9,7 +9,7 @@
 <!-- Only render if we have people in the data -->
 {#if data.people}
     {#each data.people as person}
-        <img src="{person.avatar}" width="150px" height="150px">
+        <img src="{person.avatar}" width="150px" height="150px" alt="profielfoto">
         <h1>{person.name}</h1>
         <p>{person.bio}</p>
     {/each}
