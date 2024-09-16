@@ -6,6 +6,7 @@ export const createSearchStore = (data) => {
         data,
         filteredPeople: data.person,
         search: "",
+        squad: null, // if null, show all squads
     })
 
     return {
@@ -19,7 +20,8 @@ export const createSearchStore = (data) => {
 export const searchHandler = (store) => {
     const searchTerm = store.search.toLowerCase() || "";
     store.filteredPeople = store.data.people.filter((person) => {
-        return person.name.toLowerCase().includes(searchTerm)
+        // for each person, show this person only if their name includes the search term and there is either no squad filter or they belong to the squad
+        return person.name.toLowerCase().includes(searchTerm) && (store.squad === null || person.squad_id === store.squad)
     })
 }
 
