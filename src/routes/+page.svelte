@@ -17,9 +17,22 @@
             {#each data.people as person}
                 <li>
                     <article class="card-front">
-                        <img src="{person.avatar}" width="150px" height="150px" alt=''>
-                        <h1>{person.name}</h1>
-    
+                        <header>
+                            <div>
+                                <h3>{person.id}</h3>
+                                <!-- svg -->
+                            </div>
+                            
+                            <h2>{person.name}</h2>
+                        </header>
+                        <section> <!--Is een section tag hier goed voor?-->
+                            <img src="{person.avatar}" width="150px" height="150px" alt=''>
+                        </section>
+                        <footer>
+                            <h3>{person.id}</h3>
+                            <h2>{person.name}</h2>
+                        </footer>
+                        
                     </article>
                     
                     <!-- Hier komt de achterkant -->
