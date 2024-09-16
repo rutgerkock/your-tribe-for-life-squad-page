@@ -7,28 +7,51 @@
 </script>
  
 <!-- Only render if we have people in the data -->
+ <header>
+
+ </header>
 <main>
-    <div class="grid">
+        
         {#if data.people}
+        <ul>
+            {#each data.people as person}
+                <li>
+                    <article class="card-front">
+                        <img src="{person.avatar}" width="150px" height="150px" alt=''>
+                        <h1>{person.name}</h1>
+    
+                    </article>
+                    
+                    <!-- Hier komt de achterkant -->
+                    <!-- <article class="card-back">
+                        <p>{person.bio}</p>
+                        <p>Insert profilecard link</p>
+                    </article> -->
+                </li>
+            {/each}
+        </ul>
+<!-- 
         {#each data.people as person}
         <article class="card">
             <img src="{person.avatar}" width="120px" height="120px">
             
         </article>
 
-        {/each}
+        {/each} -->
         {:else}
         <!-- This will show if no people are available -->
         <p>No data available</p>
         {/if}
-    </div>
 </main>
+<footer>
+    
+</footer>
 
 <style>
 
     main {
         max-width: 100%;
-        & .grid{
+        & ul {
             padding: 1em;
             padding-top: 5em;
             padding-bottom: 5em;
@@ -36,8 +59,7 @@
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             grid-template-rows: repeat(8, 1fr);
-            grid-column-gap: 32px;
-            grid-row-gap: 32px;
+            gap: 1em;
             max-width: 1000px;
         }
         & article{
