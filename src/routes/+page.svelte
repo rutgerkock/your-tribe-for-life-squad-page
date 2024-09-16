@@ -141,18 +141,6 @@
                 align-items: center;
                 justify-content: center;
                 position: relative;
-
-                & svg {
-                    position: absolute;
-                }
-                & svg:first-of-type {
-                    top: .5em;
-                    left: 0;
-                }
-                & svg:last-of-type {
-                    bottom: .2em;
-                    right: 0;
-                }
             }
             & img {
                 box-shadow: 2px 2px 10px rgba(131, 131, 131, 0.311);
