@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --clr-background: rgb(16, 36, 16);
+}
+
 body {
-    background-color: rgb(16, 36, 16);
+    padding: 1em;
+    background-color: var(--clr-background);
 }

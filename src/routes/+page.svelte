@@ -26,10 +26,20 @@
                             <h2>{person.name}</h2>
                         </header>
                         <section> <!--Is een section tag hier goed voor?-->
+                            <svg width="20" height="34" viewBox="0 0 27 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.3942 0.835696L26.0687 19.3271L12.3942 35.7715L0.266917 19.3271L12.3942 0.835696Z" fill="#DB0101"/>
+                            </svg>
+
                             <img src="{person.avatar}" width="150px" height="150px" alt=''>
+                            <svg width="20" height="34" viewBox="0 0 27 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.3942 0.835696L26.0687 19.3271L12.3942 35.7715L0.266917 19.3271L12.3942 0.835696Z" fill="#DB0101"/>
+                            </svg>
                         </section>
                         <footer>
-                            <h3>{person.id}</h3>
+                            <div>
+                                <h3>{person.id}</h3>
+                                <!-- svg -->
+                            </div>
                             <h2>{person.name}</h2>
                         </footer>
                         
@@ -63,51 +73,97 @@
 <style>
 
     main {
-        max-width: 100%;
-        & ul {
-            padding: 1em;
-            padding-top: 5em;
-            padding-bottom: 5em;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(8, 1fr);
-            gap: 1em;
-            max-width: 1000px;
+        font-family: 'Lusitana';
+        text-transform: uppercase;
+        height: 100vh;
+        width: 100vw;
+
+        & svg {
+            position: absolute;
+
         }
-        & article{
-            height: 220px;
-            padding: 32px;
-            border-radius: 1.5em;
-            padding: 1em;
-            background: url(card.png);
-            background-position: center;
-            background-size: 80%;
-            background-repeat: no-repeat;
+
+        & svg:first-of-type {
+            top: 0;
+            left: 0;
+        }
+        & svg:last-of-type {
+            bottom: 0;
+            right: 0;
+        }
+        & h2, h3 {
+            font-size: 1.2em;
+        }
+        & ul {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #ededed;
-            box-shadow: 5px 5px 10px rgb(9, 20, 9);
-            transform: scale(120%) rotate(-5deg) translateX(-10%) translateY(7%) ;
-                transition: ease-in 0.3s;
-            & img{
-                box-shadow: 2px 2px 4px rgba(131, 131, 131, 0.311);
-                border-radius: 100%;
-                object-fit: cover;
-            }
+            flex-wrap: wrap;
+            gap: 1em;
+            list-style: none;
+        }
+
+        & li {
+            height: 20em;
+            width: 14em;
+            border-radius: .5em;
+            padding: .5em;
+            background-color: rgb(254, 242, 228);
+            box-shadow: 0 4px 0 rgb(224, 190, 149), 5px 5px 10px rgb(9, 20, 9);
+            transition: ease-in 0.3s;
 
             &:hover{
                 cursor: pointer;
                 
                 transform: scale(125%) rotate(3deg) translateX(-12%) translateY(-10%) ;
                 transition: ease-in 0.15s;
-                box-shadow: 5px 5px 10px rgb(29, 66, 29);
+                box-shadow: 0 4px 0 rgb(224, 190, 149), 5px 5px 10px rgb(29, 66, 29);
                 z-index: 5;
                 
             }
+        }
 
+        & article {
+            width: 100%;
+            height: 100%;
+            padding: .5em 1em;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            border-radius: .5em;
+            border: 1.5px solid #DB0101;
+            
+
+            & header, footer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1em;
+                width: 100%;
+                /* background-color: aqua; */
+            }
+
+            & footer {
+                /* background-color: blue; */
+                transform: rotateZ(180deg);
+            }
+
+            & section {
+                
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                /* background-color: aqua; */
+            }
+            & img{
+                box-shadow: 2px 2px 4px rgba(131, 131, 131, 0.311);
+                border-radius: 100%;
+                object-fit: cover;
+            }
         }
     }
 </style>
