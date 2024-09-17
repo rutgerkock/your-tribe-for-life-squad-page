@@ -1,20 +1,44 @@
 <script>
+    import { createSearchStore, searchHandler } from '$lib/stores/search';
+    import { onDestroy } from 'svelte';
+
     /** @type {import('./$types').PageData} */
     export let data;
     
     // Check if the data has been received and is an array
     console.log("Received data in +page.svelte:", data);
+    
+    const searchStore = createSearchStore(data);
+
+    const unsubscribe = searchStore.subscribe((model) => searchHandler(model));
+
+    onDestroy(() => {
+        unsubscribe();
+    })
+
+    function setSquadFilter(squad_id) {
+        $searchStore.squad = squad_id
+    }
 </script>
- 
+
+
+<div class="squads">
+    <button on:click={() => setSquadFilter(null)}>Alle squads</button>
+    <button on:click={() => setSquadFilter(3)}>Squad D</button>
+    <button on:click={() => setSquadFilter(4)}>Squad E</button>
+    <button on:click={() => setSquadFilter(5)}>Squad F</button>
+    <input type="search" bind:value={$searchStore.search} placeholder="Zoek op naam" />
+</div>
+
 <!-- Only render if we have people in the data -->
  <header>
 
  </header>
 <main>
         
-        {#if data.people}
+        {#if $searchStore.filteredPeople}
         <ul>
-            {#each data.people as person}
+            {#each $searchStore.filteredPeople as person}
                 <li>
                     <article class="card-front">
                         <header>
@@ -66,8 +90,21 @@
 </footer>
 
 <style>
+
     :root {
         --clr-card: rgb(254, 242, 228); 
+
+    .squads {
+        display: flex;
+        gap: 10px;
+    }
+    .squads button {
+        text-decoration: none;
+        color: white;
+        background-color: #025730;
+        border-radius: 5px;
+        padding: 5px;
+
     }
 
     main {
