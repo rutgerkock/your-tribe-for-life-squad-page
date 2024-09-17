@@ -22,9 +22,10 @@
         $searchStore.squad = squad_id
     }
     
+    // function for cardflip, the if statement is so the card can flip back
     let currentFlippedCard = null
     function flipCard(person_id) {
-        if (currentFlippedCard == person_id) {
+        if (currentFlippedCard === person_id) {
             currentFlippedCard = null
         } else {
             currentFlippedCard = person_id
@@ -32,7 +33,6 @@
     }
     
 </script>
-
 
 <nav>
     <button on:click={() => setSquadFilter(null)}>Alle squads</button>
