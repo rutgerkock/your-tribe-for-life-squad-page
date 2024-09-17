@@ -22,13 +22,13 @@
 </script>
 
 
-<div class="squads">
+<nav>
     <button on:click={() => setSquadFilter(null)}>Alle squads</button>
     <button on:click={() => setSquadFilter(3)}>Squad D</button>
     <button on:click={() => setSquadFilter(4)}>Squad E</button>
     <button on:click={() => setSquadFilter(5)}>Squad F</button>
     <input type="search" bind:value={$searchStore.search} placeholder="Zoek op naam" />
-</div>
+</nav>
 
 <!-- Only render if we have people in the data -->
  <header>
@@ -89,16 +89,17 @@
     
 </footer>
 
-<style>
+<style lang="css">
 
     :root {
         --clr-card: rgb(254, 242, 228); 
-
-    .squads {
+    }
+    
+    nav {
         display: flex;
         gap: 10px;
     }
-    .squads button {
+    nav button {
         text-decoration: none;
         color: white;
         background-color: #025730;
