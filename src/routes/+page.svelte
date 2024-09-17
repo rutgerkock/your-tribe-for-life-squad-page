@@ -16,17 +16,18 @@
         unsubscribe();
     })
 
-    function setSquadFilter(squad_id) {
-        $searchStore.squad = squad_id
-    }
+    // function setSquadFilter(squad_id) {
+    //     $searchStore.squad = squad_id
+    // }
+
 </script>
 
 
 <nav>
-    <button on:click={() => setSquadFilter(null)}>Alle squads</button>
+    <!-- <button on:click={() => setSquadFilter(null)}>Alle squads</button>
     <button on:click={() => setSquadFilter(3)}>Squad D</button>
     <button on:click={() => setSquadFilter(4)}>Squad E</button>
-    <button on:click={() => setSquadFilter(5)}>Squad F</button>
+    <button on:click={() => setSquadFilter(5)}>Squad F</button> -->
     <h1>Choose your card</h1>
     <input class="searchBar" type="search" bind:value={$searchStore.search} placeholder="Zoek op naam" />
 </nav>
