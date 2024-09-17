@@ -30,7 +30,7 @@
     <h1>Choose your card</h1>
     <input class="searchBar" type="search" bind:value={$searchStore.search} placeholder="Zoek op naam" />
 </nav>
-<div class="line"></div>
+<hr>
 
 <!-- Only render if we have people in the data -->
  <header>
@@ -135,12 +135,13 @@
         border-radius: 5px;
     }
 
-    .line{
+    hr{
         display: flex;
         margin: 1rem auto;
         width: 92vw;
         height: 2px;
         background: #CAAA00;
+        border: 1px solid #CAAA00;
     }
 
     main {
