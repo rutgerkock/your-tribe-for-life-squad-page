@@ -27,8 +27,10 @@
     <button on:click={() => setSquadFilter(3)}>Squad D</button>
     <button on:click={() => setSquadFilter(4)}>Squad E</button>
     <button on:click={() => setSquadFilter(5)}>Squad F</button>
-    <input type="search" bind:value={$searchStore.search} placeholder="Zoek op naam" />
+    <h1>Choose your card</h1>
+    <input class="searchBar" type="search" bind:value={$searchStore.search} placeholder="Zoek op naam" />
 </nav>
+<hr>
 
 <!-- Only render if we have people in the data -->
  <header>
@@ -97,23 +99,60 @@
     
     nav {
         display: flex;
-        gap: 10px;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        
+        
     }
     nav button {
         text-decoration: none;
         color: white;
         background-color: #025730;
-        border-radius: 5px;
+        border-radius: 15px;
+        width: 6rem;
+        height: 2.5rem;
         padding: 5px;
+        transition: .8s;
+        margin: .5rem;
 
+    }
+    nav button:hover{
+        background: #026d3b;
+        scale: 1.2;
+        transition: .4s;
+    }
+
+    nav h1{
+        width: 20rem;
+        color: #CAAA00;
+        font-size: 2.5rem;
+        margin: 0 3rem;
+        line-height: 3rem;
+    }
+    .searchBar{
+        height: 2rem;
+        margin: .5rem;
+        border-radius: 5px;
+    }
+
+    hr{
+        display: flex;
+        margin: 1rem auto;
+        width: 92vw;
+        height: 2px;
+        background: #CAAA00;
+        border: 1px solid #CAAA00;
     }
 
     main {
+        display: block;
         font-family: 'Lusitana';
         text-transform: uppercase;
         height: 100vh;
-        width: 100vw;
+        width: 95vw;
         color: #043011;
+        margin: 0 auto;
+        padding-left: 1rem;
 
         & h2, h3 {
             font-size: 1.2em;
@@ -185,6 +224,11 @@
                 border-radius: 100%;
                 object-fit: cover;
             }
+        }
+    }
+    @media screen and (min-width: 1235px) {
+        nav{
+            width: 75rem;
         }
     }
 </style>
