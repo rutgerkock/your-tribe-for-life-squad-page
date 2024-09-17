@@ -1,4 +1,6 @@
 <script>
+    // @ts-nocheck
+
     import { createSearchStore, searchHandler } from '$lib/stores/search';
     import { onDestroy } from 'svelte';
 
@@ -19,6 +21,16 @@
     function setSquadFilter(squad_id) {
         $searchStore.squad = squad_id
     }
+    
+    let currentFlippedCard = null
+    function flipCard(person_id) {
+        if (currentFlippedCard == person_id) {
+            currentFlippedCard = null
+        } else {
+            currentFlippedCard = person_id
+        }
+    }
+    
 </script>
 
 
@@ -39,7 +51,8 @@
         {#if $searchStore.filteredPeople}
         <ul>
             {#each $searchStore.filteredPeople as person}
-                <li>
+                <!-- svelte-ignore a11y-no-noninteractive-element-interactions a11y-click-events-have-key-events -->
+                <li on:click={() => flipCard(person.id)} class:flipped={currentFlippedCard === person.id}>
                     <article class="card-front">
                         <header>
                             <div>
@@ -73,10 +86,10 @@
                     </article>
                     
                     <!-- Hier komt de achterkant -->
-                    <!-- <article class="card-back">
+                    <article class="card-back">
                         <p>{person.bio}</p>
                         <p>Insert profilecard link</p>
-                    </article> -->
+                    </article>
                 </li>
             {/each}
         </ul>
@@ -131,22 +144,39 @@
             padding: .5em;
             background-color: var(--clr-card);
             box-shadow: 0 4px 0 rgb(224, 190, 149), 5px 5px 10px rgb(9, 20, 9);
+            
             transition: ease-in 0.3s;
             background-size: 120%;
             position: relative;
+            transform-style: preserve-3d;
 
             &:hover{
                 cursor: pointer;
-                transform: scale(125%) rotate(3deg) translateX(-12%) translateY(-10%) ;
+                transform: scale(125%) rotate(3deg) translateX(-12%) translateY(-10%);
                 transition: ease-in 0.15s;
                 box-shadow: 0 4px 0 rgb(224, 190, 149), 5px 5px 10px rgb(29, 66, 29);
                 z-index: 5;
+                &.flipped {
+                    transform: scale(125%) rotate(3deg) translateX(-12%) translateY(-10%) perspective(400px) rotateY(180deg);
+                }
+            }
+            &.flipped {
+                transform: perspective(400px) rotateY(180deg);
             }
         }
 
+        & .card-front {
+            z-index: 1;
+        }
+
+        & .card-back {
+            transform: rotateY(180deg);
+        }
+
         & article {
-            width: 100%;
-            height: 100%;
+            width: calc(100% - 1em);
+            height: calc(100% - 1em);
+            position: absolute;
             padding: .5em 1em;
             align-items: center;
             justify-content: center;
@@ -155,6 +185,7 @@
             justify-content: space-between;
             border-radius: .5em;
             border: 1.5px solid #DB0101; /* zwarte border wanneer het kaartje klaver/schoppen heeft? */
+            backface-visibility: hidden;
 
             & header, footer {
                 display: flex;
