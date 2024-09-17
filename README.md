@@ -1,30 +1,18 @@
-# Installeren
+# Installing
 ## create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-### Creating a project
+### Installing npm
+Before you start working on this project enter ```npm install``` in your terminal, if it isnt recognised you may need to download npm first (isn't nessecary most of the time)
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### add .env file
+To use this application, you would need a .env file. If you dont, you will run into a Internal 500 error.
+1. add a `.env` file
+2. add the code: ```PUBLIC_APIURL = https://fdnd.directus.app/```
 
 ### Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+You should be ready to go to work! now youll need a localhost to work on, use the command ```npm run dev``` to open the project on a localhost.
 
 ### Building
 
@@ -35,9 +23,5 @@ npm run build
 ```
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-> 
-## add .env file
-To use this application, you would need a .env file. If you dont, you will run into a Internal 500 error.
-1. add a `.env` file
-2. add the code: ```PUBLIC_APIURL = https://fdnd.directus.app/```
+## Hosting
+This project is hosted on vercel
