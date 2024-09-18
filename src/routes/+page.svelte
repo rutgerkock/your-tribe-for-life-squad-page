@@ -3,6 +3,7 @@
 
     import { createSearchStore, searchHandler } from '$lib/stores/search';
     import { onDestroy } from 'svelte';
+    import { fade } from 'svelte/transition';    
 
     /** @type {import('./$types').PageData} */
     export let data;
@@ -52,9 +53,14 @@
         
         {#if $searchStore.filteredPeople}
         <ul>
-            {#each $searchStore.filteredPeople as person}
-                <!-- svelte-ignore a11y-no-noninteractive-element-interactions a11y-click-events-have-key-events -->
-                <li on:click={() => flipCard(person.id)} class:flipped={currentFlippedCard === person.id}>
+            {#each $searchStore.filteredPeople as person (person.id)}
+            <!-- svelte-ignore a11y-no-noninteractive-element-interactions a11y-click-events-have-key-events -->
+                <li
+                    on:click={() => flipCard(person.id)}
+                    class:flipped={currentFlippedCard === person.id}
+                    in:fade={{ duration: 500}}
+                    >
+        
                     <article class="card-front">
                         <header>
                             <div>
@@ -90,7 +96,6 @@
                     <!-- Hier komt de achterkant -->
                     <article class="card-back">
                         <p>{person.bio}</p>
-                        <p>Insert profilecard link</p>
                     </article>
                 </li>
             {/each}
@@ -136,12 +141,19 @@
     }
 
     nav h1{
-        width: 20rem;
         color: #CAAA00;
         font-size: 2.5rem;
         margin: 0 3rem;
         line-height: 3rem;
+        width: 0;
+        text-wrap: nowrap;
+        overflow: hidden;
+        border-right: 2px solid transparent; 
+        white-space: nowrap;
+        animation: typing 2.25s 1.8s steps(20, end) forwards, blink 1s step-end 4;
     }
+
+
     .searchBar{
         height: 2rem;
         margin: .5rem;
@@ -210,6 +222,7 @@
 
         & .card-back {
             transform: rotateY(180deg);
+            overflow: scroll;
         }
 
         & article {
@@ -257,10 +270,21 @@
             }
         }
     }
+
     @media screen and (min-width: 1235px) {
         nav{
             width: 75rem;
         }
     }
+
+    @keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #CAAA00 }
+}
+
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 20rem }
+}
 </style>
 
