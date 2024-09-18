@@ -174,7 +174,6 @@
         font-family: 'Lusitana';
         text-transform: uppercase;
         height: 100vh;
-        width: 95vw;
         color: #043011;
         margin: 0 auto;
         padding-left: 1rem;
