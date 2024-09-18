@@ -9,7 +9,7 @@
 }
 
 body {
-    padding: 1em;
+    padding: 3em;
     background-color: var(--clr-background);
-    
+    font-family: 'Lusitana';
 }

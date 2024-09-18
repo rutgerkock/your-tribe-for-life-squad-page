@@ -34,20 +34,21 @@
     
 </script>
 
-<nav>
-    <button on:click={() => setSquadFilter(null)}>Alle squads</button>
-    <button on:click={() => setSquadFilter(3)}>Squad D</button>
-    <button on:click={() => setSquadFilter(4)}>Squad E</button>
-    <button on:click={() => setSquadFilter(5)}>Squad F</button>
-    <h1>Choose your card</h1>
-    <input class="searchBar" type="search" bind:value={$searchStore.search} placeholder="Zoek op naam" />
-</nav>
-<hr>
+
+
 
 <!-- Only render if we have people in the data -->
  <header>
-
+    <h1>Choose your card</h1>
+    <nav>
+        <button on:click={() => setSquadFilter(null)}>Alle squads</button>
+        <button on:click={() => setSquadFilter(3)}>Squad D</button>
+        <button on:click={() => setSquadFilter(4)}>Squad E</button>
+        <button on:click={() => setSquadFilter(5)}>Squad F</button>
+    </nav>
+    <input class="searchBar" type="search" bind:value={$searchStore.search} placeholder="Zoek op naam" />
  </header>
+ <hr>
 <main>
         
         {#if $searchStore.filteredPeople}
@@ -146,49 +147,66 @@
     :root {
         --clr-card: rgb(254, 242, 228); 
     }
+
+    h1 {
+        color: #CAAA00;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        order: 0;
+    }
     
-    nav {
-        display: flex;
+    header {
+        display: grid;
+        /* grid-template-columns: 1fr 1fr 1fr; */
+        grid-template-columns: 1fr;
         flex-wrap: wrap;
         margin: 0 auto;
-        
-        
+        /* gap: 1em; */
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        gap: 1em;
+        position: relative;
     }
+
+    nav {
+        display: flex;
+        justify-self: center;
+        overflow: auto;
+        width: 100%;
+        max-width: fit-content;
+    }
+
     nav button {
+        
         text-decoration: none;
         color: white;
         background-color: #025730;
         border-radius: 15px;
-        width: 6rem;
+        min-width: 6em;
         height: 2.5rem;
         padding: 5px;
         transition: .8s;
         margin: .5rem;
-
     }
-    nav button:hover{
+
+    nav button:hover {
         background: #026d3b;
         scale: 1.2;
         transition: .4s;
     }
 
-    nav h1{
-        width: 20rem;
-        color: #CAAA00;
-        font-size: 2.5rem;
-        margin: 0 3rem;
-        line-height: 3rem;
-    }
-    .searchBar{
+    .searchBar {
         height: 2rem;
-        margin: .5rem;
+        width: 100%;
+        max-width: 30em;
         border-radius: 5px;
+        justify-self: center;
     }
 
-    hr{
+    hr {
         display: flex;
-        margin: 1rem auto;
-        width: 92vw;
+        margin: 3em auto;
         height: 2px;
         background: #CAAA00;
         border: 1px solid #CAAA00;
@@ -196,13 +214,11 @@
 
     main {
         display: block;
-        font-family: 'Lusitana';
         text-transform: uppercase;
-        height: 100vh;
-        width: 95vw;
+        /* width: 95vw; */
         color: #043011;
         margin: 0 auto;
-        padding-left: 1rem;
+        margin-bottom: 4em;
 
         & h2, h3 {
             font-size: 1.2em;
@@ -226,6 +242,7 @@
             background-size: 120%;
             position: relative;
             transform-style: preserve-3d;
+            
 
             &:hover{
                 cursor: pointer;
@@ -265,6 +282,7 @@
             backface-visibility: hidden;
 
             & header, footer {
+                all: unset;
                 display: flex;
                 justify-content: space-between;
                 gap: 1em;
@@ -295,9 +313,46 @@
             }
         }
     }
-    @media screen and (min-width: 1235px) {
-        nav{
-            width: 75rem;
+
+    /* LAPTOP */
+    @media screen and (min-width: 760px) {
+        header {
+            max-width: 70em;
+            grid-template-columns: 1fr 20em;
+            grid-template-areas: 
+                "h1 h1"
+                "nav searchBar";
+        }
+
+        header h1 {
+            grid-area: h1;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            grid-area: nav;
+            justify-self: left; 
+        }
+
+        .searchBar {
+            grid-area: searchBar;
+            width: 20em;
+            justify-self: right;
+        }
+
+        main li {
+            width: 14em;
+        }
+    }
+
+    /* DESKTOP */
+    @media screen and (min-width: 1440px) {
+        header {
+            max-width: 100%;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-areas: 
+                "nav h1 searchBar";
+            justify-content: center;
         }
     }
 </style>
