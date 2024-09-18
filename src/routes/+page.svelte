@@ -212,6 +212,7 @@
             flex-wrap: wrap;
             gap: 1em;
             list-style: none;
+            justify-content: center;
         }
         & li {
             height: 20em;
