@@ -153,25 +153,30 @@
         --clr-card: rgb(254, 242, 228); 
     }
 
-    h1 {
-        color: #CAAA00;
-        font-size: 2.5rem;
-        text-transform: uppercase;
-        order: 0;
-    }
+    
     
     header {
         display: grid;
-        /* grid-template-columns: 1fr 1fr 1fr; */
         grid-template-columns: 1fr;
         flex-wrap: wrap;
         margin: 0 auto;
-        /* gap: 1em; */
         justify-content: center;
         text-align: center;
         align-items: center;
         gap: 1em;
         position: relative;
+    }
+
+    header h1 {
+        color: #CAAA00;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        width: 0;
+        text-wrap: nowrap;
+        overflow: hidden;
+        border-right: 2px solid transparent; 
+        white-space: nowrap;
+        animation: typing 2.25s 1.8s steps(20, end) forwards, blink 1s step-end 4;
     }
 
     nav {
@@ -183,7 +188,6 @@
     }
 
     nav button {
-        
         text-decoration: none;
         color: white;
         background-color: #025730;
@@ -193,25 +197,13 @@
         padding: 5px;
         transition: .8s;
         margin: .5rem;
+        cursor: pointer;
     }
 
     nav button:hover {
         background: #026d3b;
         scale: 1.2;
         transition: .4s;
-    }
-
-    nav h1{
-        color: #CAAA00;
-        font-size: 2.5rem;
-        margin: 0 3rem;
-        line-height: 3rem;
-        width: 0;
-        text-wrap: nowrap;
-        overflow: hidden;
-        border-right: 2px solid transparent; 
-        white-space: nowrap;
-        animation: typing 2.25s 1.8s steps(20, end) forwards, blink 1s step-end 4;
     }
 
     .searchBar{
