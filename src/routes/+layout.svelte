@@ -1,22 +1,20 @@
 <script>
-  import { onMount } from 'svelte';
+import { onMount } from 'svelte';
 
   let isLoaded = false;
 
   onMount(() => {
     setTimeout(() => {
       isLoaded = true;      
-    }, 1800);
-    
+    }, 1800); 
   });
 </script>
 
 {#if !isLoaded}
-  <div class="loader">
-    <h1>FDND</h1>
-    <h1>SQUADS</h1>
-  </div>
-
+<div class="loader">
+  <h1>FDND</h1>
+  <h1>SQUADS</h1>
+</div>
 {/if}
 <slot />
 
@@ -35,7 +33,6 @@
   z-index: 999;
   overflow: hidden;
 }
-
 .loader h1 {
   font-family: 'Lusitana', sans-serif; 
   font-size: 22.5vw; 
@@ -47,7 +44,6 @@
   animation: slideUp 1.8s cubic-bezier(0.42, 0, 0.58, 1) forwards;
   margin: 0;
 }
-
 
 /* animations -------------------------------------------------------*/
 @keyframes slideUp {
@@ -72,5 +68,4 @@
     transform: translateY(-100vh); 
   }
 }
-
 </style>
