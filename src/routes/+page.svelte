@@ -1,13 +1,11 @@
 <script>
   import { createSearchStore, searchHandler } from '$lib/stores/search';
   import { onDestroy } from 'svelte';
+  import { fade } from 'svelte/transition';  
 
   /** @type {import('./$types').PageData} */
   export let data;
-  
-  // Check if the data has been received and is an array
-  console.log("Received data in +page.svelte:", data);
-    
+
   const searchStore = createSearchStore(data);
 
   const unsubscribe = searchStore.subscribe((model) => searchHandler(model));
