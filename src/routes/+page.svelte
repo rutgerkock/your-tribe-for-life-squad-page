@@ -374,7 +374,7 @@
 
     @keyframes typing {
         from { width: 0 }
-        to { width: 20rem }
+        to { width: 100% }
 }
 </style>
 
