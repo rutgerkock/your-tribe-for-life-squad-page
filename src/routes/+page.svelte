@@ -40,10 +40,6 @@
     list-style: none;
     position: relative;
     cursor: pointer;
-    border: 45px solid;
-    border-image-source: url("../border-image3.jpg");
-    border-image-slice: 93 93 91 95;
-    border-image-repeat: round round;
   }
 
   article {
@@ -60,9 +56,13 @@
     z-index: 1;
     /* background-color: coral; */
   }
-
+  
   .card-back {
     background-color: cadetblue;
     transform: rotateY(180deg);
+    border: 45px solid;
+    border-image-source: url("../border-image3.jpg");
+    border-image-slice: 93 93 91 95;
+    border-image-repeat: round round;
   }
 </style>
